@@ -17,7 +17,14 @@ logging:
   level:
     ROOT: INFO
     io.github.jhipster: INFO
-    com.mycompany.myapp: INFO
+    com.mycompany.bugtracker: INFO
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
 management:
   metrics:
@@ -56,6 +63,15 @@ spring:
     password:
   thymeleaf:
     cache: true
+  sleuth:
+    sampler:
+      probability: 1 # report 100% of traces
+  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
+    base-url: http://localhost:9411
+    enabled: false
+    locator:
+      discovery:
+        enabled: true
 
 # ===================================================================
 # To enable TLS in production, generate a certificate using:
@@ -105,7 +121,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: ZjI5MTU1ZTk0Y2NiM2ZjYjczMjc3YWJmYWI2YmNjODc0ODllZmE2MmM3NzNhOWMwNzlhMjI4MWU5M2MwNzA3NDk0ZTI5YWEyM2QwOWM0MjliODFkNWQzZjRmMDFlZmUzZTg4ZGQzOWIwOTNiYzUyODE0YjM5NjZiZmQzY2I0OTE=
+        base64-secret: MTRjZDk2NmIzODk5NWNhZTZkYWY2NjExMGQ2ZDE3YTlhY2U2ZTA2NTYyMDQ5YzI3N2ZhZWM3OGM4ODExNDExYzdjMDBiMTYxYjdkZjA2NzhmZDhhMDRkYWJkZjE2N2IyMGZkZmI3YWY0YmEwOGY2NzlkMThkMGQ2YjllMTBjNjI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

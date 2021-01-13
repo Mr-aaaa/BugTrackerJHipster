@@ -13,6 +13,13 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: BugTrackerJHipster
+    instanceId: BugTrackerJHipster:${spring.application.instance-id:${random.value}}
+
 spring:
   profiles:
     # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
@@ -97,7 +104,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: ZjI5MTU1ZTk0Y2NiM2ZjYjczMjc3YWJmYWI2YmNjODc0ODllZmE2MmM3NzNhOWMwNzlhMjI4MWU5M2MwNzA3NDk0ZTI5YWEyM2QwOWM0MjliODFkNWQzZjRmMDFlZmUzZTg4ZGQzOWIwOTNiYzUyODE0YjM5NjZiZmQzY2I0OTE=
+        base64-secret: MTRjZDk2NmIzODk5NWNhZTZkYWY2NjExMGQ2ZDE3YTlhY2U2ZTA2NTYyMDQ5YzI3N2ZhZWM3OGM4ODExNDExYzdjMDBiMTYxYjdkZjA2NzhmZDhhMDRkYWJkZjE2N2IyMGZkZmI3YWY0YmEwOGY2NzlkMThkMGQ2YjllMTBjNjI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
   metrics:
